@@ -79,18 +79,6 @@ for (tt in 1:10) {
 #set the maximum to 20
 
 #loop over addition of X+1
-#loop to max if
-
-n0 = 100
-R= 1.05
-N1= n0*R
-N1
-
-r=1.05; # growth rate
-popsize = 100;
-for(time in 1:10){
-  popsize[time]=popsize[time-1]*r
-}
 
 
 N0 <- 100
@@ -101,4 +89,30 @@ NN[1] <- N0
 for (tt in 1:ttMax) {
   NN[tt+1] <- RR*NN[tt]
 }
-plot(1:11, NN, xlab="time", ylab="N", type="b", col="red")
+plot(1:11, NN, xlab="time", ylab="N", type="b", col="blue")
+
+
+N0 <- 100
+RR <- .95
+ttMax <- 200
+NN <- matrix(NN, nrow=1, ncol=ttMax+1)
+NN[1] <- N0
+for (tt in 1:ttMax) {
+  NN[tt+1] <- RR*NN[tt]
+}
+plot(1:201, NN, xlab="time", ylab="N", type="b", col="red")
+
+# function expression
+
+population <- function(N0, RR, ttMAx) {
+NN <- matrix(NN, nrow=1, ncol=ttMax+1)
+NN[1] <- N0
+for (tt in 1:ttMax) {
+  NN[tt+1] <- RR*NN[tt]
+}
+plot(1:(ttMax+1), NN, xlab="time", ylab="N", type="b", col="red")
+return(NN)
+}
+population (100, 1, 10)
+
+
