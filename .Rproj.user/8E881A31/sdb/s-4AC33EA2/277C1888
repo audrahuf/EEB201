@@ -1,0 +1,18 @@
+{
+    "contents" : "# This is my scratch script for practicing R\n\nlibrary(ape)\nlibrary(geiger)\nlibrary(ggplot2)\n",
+    "created" : 1442421903642.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4076900695",
+    "id" : "277C1888",
+    "lastKnownWriteTime" : 1442422768,
+    "path" : "~/GitHub/EEB201/My_first_script.R",
+    "project_path" : "My_first_script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
