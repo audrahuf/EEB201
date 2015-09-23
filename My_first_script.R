@@ -116,3 +116,17 @@ return(NN)
 population (100, 1, 10)
 
 
+#logistic growth in discrete time
+
+N0 <- 100
+RR <- 1.05
+ttMax <- 10
+NN <- matrix(NN, nrow=1, ncol=ttMax+1)
+NN[1] <- N0
+for (tt in 1:ttMax) {
+  NN[tt+1] <- RR*NN[tt]
+}
+plot(1:11, NN, xlab="time", ylab="N", type="b", col="blue")
+
+for(i in 1:10)
+{cat("*&")}
