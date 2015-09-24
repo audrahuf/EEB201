@@ -193,9 +193,22 @@ length(pheno)
 hist(pheno)
 
 # Fit a linear model where the genotype is a single categorical variable (equivalent to one-way anova)
-genofactor=factor(snps["rs218206_G",])
+casegenofactor=factor(snps["rs7584086_T",])
+controlgenofactor=factor(snps["rs7584086_T",])
+
+table(casegenofactor== 1)
+table(casegenofactor== 2)
+table(casegenofactor== 0)
+
+table(controlgenofactor==1)
+table(controlgenofactor==0)
+table(controlgenofactor==2)
+
+
+
 m=lm(pheno~genofactor)
 summary(m)
+
 # Make a plot of the phenotype as a function of the categorical variable 
 plot(pheno~factor(snps["rs218206_G",]))  # Note: plot automatically produces a boxplot
 
