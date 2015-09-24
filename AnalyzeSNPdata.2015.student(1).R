@@ -127,13 +127,16 @@ compute_chisquare_2=function(x){
 # Apply the compute_chi_square function to each snp
 chisqs=apply(snps,1,compute_chisquare)
 chisqs2=apply(snps,1,compute_chisquare_2)
+-log10(chisqs)
+-log10(chisqs2)
 
 #check to see that the chisquare statistcs are the same:
 #first do this by computing Pearson's correlation coefficient:
 cor.test(chisqs,chisqs2)
 
 #we can also do a quick scatterplot:
-plot(chisqs,chisqs2)
+plot(-log10(chisqs),-log10(chisqs2))
+
 
 # Compute p-values for each chi-square value using the pchisq function
 pvals=pchisq(chisqs,1,lower.tail=FALSE)
@@ -163,7 +166,7 @@ sig_geno<-snps[sig_snp_ids,]
 # then search our list of 
 
 # Read in phenotype data file
-z=read.table("phenotypic-sim-data.txt",header=TRUE)
+z=read.table("pheno.sim.2014.txt",header=TRUE)
 # Extract the glucose level column as our phenotype of interest
 pheno=z$glucose_mmolperL
 # Check length is equal to number of individuals
