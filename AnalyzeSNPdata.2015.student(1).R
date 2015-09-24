@@ -137,7 +137,6 @@ cor.test(chisqs,chisqs2)
 #we can also do a quick scatterplot:
 plot(-log10(chisqs),-log10(chisqs2))
 
-
 # Compute p-values for each chi-square value using the pchisq function
 pvals=pchisq(chisqs,1,lower.tail=FALSE)
 
@@ -166,9 +165,28 @@ sig_geno<-snps[sig_snp_ids,]
 # then search our list of 
 
 # Read in phenotype data file
-z=read.table("pheno.sim.2014.txt",header=TRUE)
+z=read.table("phenotypic-sim-data.txt",header=TRUE)
 # Extract the glucose level column as our phenotype of interest
 pheno=z$glucose_mmolperL
+
+Which(pheno>4.7)
+control <-which(pheno <4.7)
+cases <-which(pheno >4.7)
+
+#make smooth density plot:
+
+pdf(file="Normal_density.pdf", width=6,height=6); #open the file
+par(mfrow=c(1,1), mar=c(4, 4, 3, 2)) #sets plotting area and margins
+plot(density(cases),col=2,lwd=4,xlab="Value",xlim=c(0,40),main="Normal distribution")
+lines(density(control),col=4,lwd=4) #add the SD=3 values
+legend(0,5,c("sigma=1","sigma=3"),lwd=4,col=c(2,4),cex=1.5) #put a legend on
+#we can highlight the upper 10% of each distribution with a vertical line:
+abline(v=quantile(cases,0.9),lty=2,lwd=3,col=2) #puts a vertical line onto the plot 
+abline(v=quantile(control,0.9),lty=2,lwd=3,col=4) #puts a vertical line onto the plot 
+
+dev.off()
+
+
 # Check length is equal to number of individuals
 length(pheno)
 # Plot histogram
