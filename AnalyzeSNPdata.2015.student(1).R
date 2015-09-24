@@ -15,7 +15,7 @@
 setwd("~/Dropbox/Kirk_stuff/KEL_bootcamp/2014")
 
 # Load a data set
-snpsDataFrame=read.table('hapmap_CEU_r23a_chr2_ld.txt',header=TRUE)
+snpsDataFrame=read.table('hapmap.txt',header=TRUE)
 
 # What are the dimensions of the data?
 dim(snpsDataFrame)
@@ -163,7 +163,7 @@ sig_geno<-snps[sig_snp_ids,]
 # then search our list of 
 
 # Read in phenotype data file
-z=read.table("pheno.sim.2014.txt",header=TRUE)
+z=read.table("phenotypic-sim-data.txt",header=TRUE)
 # Extract the glucose level column as our phenotype of interest
 pheno=z$glucose_mmolperL
 # Check length is equal to number of individuals
